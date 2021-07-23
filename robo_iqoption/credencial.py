@@ -27,12 +27,4 @@ def loginIQ(email, senha):
 def capturaSaldo():
     return ap1.get_balance()
 
-@eel.expose 
-def mhi2():
-    while True:
-        minutos = float(((datetime.now()).strftime('%M.%S'))[1:])
-        entrar = True if (minutos >= 4.58 and minutos <= 5) or minutos >= 9.58 else False
-        print('Hora de entrar?',entrar,'/ Minutos:',minutos)
-
-
 eel.start('index.html', size=(1100, 600))
