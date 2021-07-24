@@ -3,6 +3,7 @@ from datetime import datetime
 import time, json
 import sys
 import eel
+from getBalance import getBalance
 
 eel.init('_web')
 ap1 = 0
@@ -16,15 +17,11 @@ def loginIQ(email, senha):
     if API.check_connect():
         global ap1 
         ap1 = API
-        saldo = API.get_balance()
+        saldo = getBalance(ap1)
         list_API = API, saldo
         return list_API
     else:
         return "Erro ao conectar"
         sys.exit()
-
-@eel.expose        
-def capturaSaldo():
-    return ap1.get_balance()
 
 eel.start('index.html', size=(1100, 600))
